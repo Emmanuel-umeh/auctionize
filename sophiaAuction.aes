@@ -41,11 +41,24 @@ contract MyAuction =
     let product = getProduct(index)
     let addresses = Call.caller
     let updatedBid = Call.value
+    let contractBalance = getContractBalance()
+    put(state{bidders[index]= addresses})
+    
+    biddingSecurity()
+    
+    
     if(product.sold == true)
       abort("product has been sold")
-    
-    if(Call.value > product.currentPrice)
-      Chain.spend(product.creatorAddress, Call.value)
+    //first bid
+    if(Call.value > product.currentPrice &&  contractBalance == 0)
+      Chain.spend(Contract.address, Call.value)
+      
+      
+      //second bid
+    if(Call.value > product.currentPrice && contractBalance != 0)
+      let previousbidder = getBidderAddress(index-1)
+      Chain.spend(previousbidder,Contract.balance)
+     
     elif(Call.value < updatedBid)
       abort("your bid is lower than the current bid")
     else
@@ -57,7 +70,7 @@ contract MyAuction =
     put(state { products = updatedProduct})
       
     put(state{bidderLength = index})
-    put(state{bidders[index]= addresses})
+    
     
   //length of registered bidders
   entrypoint getBidderLength() : int = 
@@ -79,7 +92,18 @@ contract MyAuction =
     
   stateful entrypoint closeBid(index : int) = 
     put(state{products[index].sold = true})
+    let product = getProduct(index)
+    let total = Contract.balance
+    let creatorsAddress = product.creatorAddress
+    Chain.spend(creatorsAddress: address, product.currentPrice: int)
     
+    
+  public entrypoint getContractBalance() : int =
+    Contract.balance
   
-
-  
+  public entrypoint getContractowner() : address =
+    Contract.creator
+    
+  stateful entrypoint biddingSecurity() = 
+    if(Call.caller == Contract.creator)
+      abort("you cannot bid on your own product")
