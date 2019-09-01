@@ -18,33 +18,32 @@ window.addEventListener('load', async () => {
     renderProduct();
 });
 
-// jQuery("#productBody").on("click", ".bidButton", async function(event){
-//     const value = $("#productBody").siblings('.bid').val();
-//     // const value = parseInt($(".bid").val());
+jQuery("#productBody").on("click", ".bidButton", async function(event){
+    const value = $(this).siblings('input').val();
+    // const value = $(this).siblings('.input').val();
+    // const value = parseInt((document.getElementById(".inputval").value),10);
+    console.log("the value",value);
+    console.log(typeof value);
+    const dataIndex = event.target.id;
+    const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
+    ProductArray[foundIndex].Price += parseInt(value, 10);
+    renderProduct();
+})
 
-//     console.log("the value",value);
-//     console.log(typeof value);
-//     const dataIndex = event.target.id;
-//     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
-//     ProductArray[foundIndex].Price += parseInt(value, 10);
-//     renderProduct();
-// })
+// $(document).ready(function(){
+//     $("#productBody").on("click", ".bidButton", async function(event){
+//         const value = parseInt($(".bid").val()) ;
+//         console.log(value)
+//         console.log(typeof value)
+//         // event.preventDefault();
 
-$(document).ready(function(){
-    $("#productBody").on("click", ".bidButton", async function(event){
-        const value = parseInt($(".bid").val()) ;
-        console.log(value)
-        console.log(typeof value)
-        // event.preventDefault();
-
-    })
-  });
+//     })
+//   });
 
 $('#regButton').click(async function(){
     var name =($('#regSellerName').val()),
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
-    
     productName = ($('#regProductName').val());
 
     console.log("Price:",price)
