@@ -16,19 +16,24 @@ function renderProduct()
 
 window.addEventListener('load', async () => {
     renderProduct();
+
+
 });
 
+// document.getElementById("bidButton").addEventListener('click', function(event){
+//     console.log(document.getElementById("input").value)
+// });
+
 jQuery("#productBody").on("click", ".bidButton", async function(event){
-    const value = $(this).siblings('input').val();
-    // const value = $(this).siblings('.input').val();
-    // const value = parseInt((document.getElementById(".inputval").value),10);
-    console.log("the value",value);
-    console.log(typeof value);
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
+    const value = $(".bid")[foundIndex].value ;
+    console.log("the value",value);
+    console.log(typeof value);
+    
     ProductArray[foundIndex].Price += parseInt(value, 10);
     renderProduct();
-})
+});
 
 // $(document).ready(function(){
 //     $("#productBody").on("click", ".bidButton", async function(event){
@@ -59,4 +64,3 @@ $('#regButton').click(async function(){
     })
     renderProduct();
 });
-
