@@ -1,9 +1,120 @@
-var ProductArray = [
-    {"name":"Emmanuel", "url":"/assets/img/bg-showcase-1.jpg", "productName":"Phone cover", "Price": 6000, "index":1},
-    {"name":"Mega", "url":"https://cdn.vox-cdn.com/thumbor/rRgA9WIf_N14Quqqthkpw3Jv3I8=/0x0:2625x1907/920x613/filters:focal(1103x744:1523x1164):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/52187575/jbareham_160418_0931_0086_FINAL_NO_BUFFER_5MB_02.0.0.jpeg", "productName":"gadgets", "Price": 7000, "index":2},
-    {"name":"Chains", "url":"https://i0.wp.com/gizmosscan.com/wp-content/uploads/2019/01/business-camera-contemporary-325153-e1546428282854.jpg?resize=696%2C376&ssl=1", "productName":"Game Pad", "Price": 4000, "index":3}
+const contractSource = '
+contract MyAuction =
 
-];
+  record product = 
+    { creatorAddress : address,
+      url            : string,
+      nameofProduct  : string,
+      currentPrice   : int,
+      sold           : bool }
+
+  record state = 
+    { products : map(int, product),
+      productLength : int,
+      bidders : map(int,address),
+      bidderLength : int }
+    
+  entrypoint init() = 
+    { products = {}, 
+      productLength = 0,
+      bidders = {},
+      bidderLength = 0 }
+  
+  entrypoint getProduct(index:int) : product = 
+    switch(Map.lookup(index, state.products))
+      None => abort("Product does not exist with this index")
+      Some(x) => x  
+    
+  stateful entrypoint registerProduct(url' : string, nameofProduct': string, currentPrice': int) =
+    let product = { creatorAddress = Call.caller, url = url', nameofProduct = nameofProduct', currentPrice = currentPrice', sold = false}  
+    let index = getProductLength() + 1 
+    put(state{products[index] = product, productLength  = index})
+    
+
+  entrypoint getProductLength() : int = 
+    state.productLength
+  
+  
+  
+  //bid functionality
+  
+  stateful entrypoint bid(index: int) =
+    let product = getProduct(index)
+    let addresses = Call.caller
+    let updatedBid = Call.value
+    let contractBalance = getContractBalance()
+    put(state{bidders[index]= addresses})
+    
+    biddingSecurity()
+    
+    
+    if(product.sold == true)
+      abort("product has been sold")
+    //first bid
+    if(Call.value > product.currentPrice &&  contractBalance == 0)
+      Chain.spend(Contract.address, Call.value)
+      
+      
+      //second bid
+    if(Call.value > product.currentPrice && contractBalance != 0)
+      let previousbidder = getBidderAddress(index-1)
+      Chain.spend(previousbidder,Contract.balance)
+     
+    elif(Call.value < updatedBid)
+      abort("your bid is lower than the current bid")
+    else
+      abort("you need to enter a value higher than 0 ")
+    let updatedProduct = state.products{ [index].currentPrice = updatedBid}
+    let index = getBidderLength() + 1
+    
+    
+    put(state { products = updatedProduct})
+      
+    put(state{bidderLength = index})
+    
+    
+  //length of registered bidders
+  entrypoint getBidderLength() : int = 
+    state.bidderLength   
+    
+    
+  //stores address of registered bidsers
+  
+  entrypoint getBidderAddress(index:int) = 
+    switch(Map.lookup(index, state.bidders))
+      None => abort("bidder does not exist with this index")
+      Some(x) => x 
+  
+ // stateful entrypoint bidders(name:string)  = 
+   // let bidder = { bidderAddress = Call.caller, updatedPrice = Call.value, name = name }
+    //let index = getBidderLength() + 1
+    //put(state{bidders[index] = bidders, bidderLength  = index})
+    //put(state{bidders[index] = bidders, bidders  = bidder})
+    
+  stateful entrypoint closeBid(index : int) = 
+    put(state{products[index].sold = true})
+    let product = getProduct(index)
+    let total = Contract.balance
+    let creatorsAddress = product.creatorAddress
+    Chain.spend(creatorsAddress: address, product.currentPrice: int)
+    
+    
+  public entrypoint getContractBalance() : int =
+    Contract.balance
+  
+  public entrypoint getContractowner() : address =
+    Contract.creator
+    
+  stateful entrypoint biddingSecurity() = 
+    if(Call.caller == Contract.creator)
+      abort("you cannot bid on your own product")
+'; 
+const contactAddress = 'ct_tHnPWpfw12hsvqMnchTeqQAaHtCqjiEg7GLFEBokMA4Y81kA';
+var ProductArray = {};
+var client = null;
+var productLength = 0;
+
+
 
 function renderProduct()
 {
@@ -15,8 +126,20 @@ function renderProduct()
 }
 
 window.addEventListener('load', async () => {
-    renderProduct();
+    $("#loader").show();
 
+    client = await Ae.Aepp();
+
+    const contract = await client.getContractInstance(contractSource, {contractAddress});
+    const calledGet = await contract.call('getProductLength', [], {callStatic : true}).catch(e => console.error(e));
+    console.log('calledGet', calledGet);
+
+    const decodedGet = await calledGet.decode().catch(e => console.error(e));
+    console.log('decodedGet', decodedGet)
+
+
+    renderProduct();
+    $("#loader").hide();
 
 });
 
