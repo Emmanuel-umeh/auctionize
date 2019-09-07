@@ -107,7 +107,7 @@ public entrypoint getContractowner() : address =
 stateful entrypoint biddingSecurity() = 
   if(Call.caller == Contract.creator)
     abort("you cannot bid on your own product")'; 
-const contactAddress = 'ct_wiVwt4Rts4v5UwAAhfCLjEPysdEHLx78vwXnAjiSXdMHRB7ed';
+const contactAddress = 'ct_iDfWSfLFbskEqQKGCU5fpXw1iWGo1DHLQUYLBuKhsoHpmGPdR';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
