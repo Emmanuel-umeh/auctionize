@@ -107,6 +107,8 @@ public entrypoint getContractowner() : address =
 stateful entrypoint biddingSecurity() = 
   if(Call.caller == Contract.creator)
     abort("you cannot bid on your own product")'; 
+
+
 const contactAddress = 'ct_iDfWSfLFbskEqQKGCU5fpXw1iWGo1DHLQUYLBuKhsoHpmGPdR';
 var ProductArray = [];
 var client = null;
@@ -142,7 +144,7 @@ window.addEventListener('load', async () => {
     productLength = await callStatic('getProductLength', []); 
     
     for(let i = 1; i<= productLength; i++ ){
-        const product =  await callStatic("getProduct", [1]);
+        const product =  await callStatic("getProduct", [i]);
     
 
     ProductArray.push({
