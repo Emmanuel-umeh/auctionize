@@ -144,19 +144,19 @@ window.addEventListener('load', async () => {
     productLength = await callStatic('getProductLength', []); 
     
     for(let i = 1; i<= productLength; i++ ){
-        const product =  await callStatic("getProduct", [i]);
+      const product =  await callStatic('getProduct', [i]);
     
 
-    ProductArray.push({
-        name : product.name,
-        url : product.url,
-        index : ProductArray.length + 1,
-        productName : product.productName,
-        Price : product.price 
+      ProductArray.push({
+        name : product.sold,
+        url : product.nameofProduct,
+        index : 1,
+        productName : product.url,
+        Price : product.currentPrice 
     })
-}
-    renderProduct();
-    $('#loader').hide();
+  }
+  renderProduct();
+  $('#loader').hide();
 });
 
 // document.getElementById("bidButton").addEventListener('click', function(event){
