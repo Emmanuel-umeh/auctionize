@@ -146,6 +146,7 @@ window.addEventListener('load', async () => {
     for(let i = 1; i<= productLength; i++ ){
       const product =  await callStatic('getProduct', [i]);
     
+      console.log("for loop reached")
 
       ProductArray.push({
         name : product.sold,
