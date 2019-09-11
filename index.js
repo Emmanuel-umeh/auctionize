@@ -109,7 +109,7 @@ stateful entrypoint biddingSecurity() =
     abort("you cannot bid on your own product")`; 
 
 
-const contactAddress = 'ct_mbvX3jRxD8D64yCwrzjpGJvxxqWdcnPxpLVeHPUgYP7Rwifwu';
+const contractAddress = 'ct_mbvX3jRxD8D64yCwrzjpGJvxxqWdcnPxpLVeHPUgYP7Rwifwu';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -127,7 +127,7 @@ function renderProduct()
 //Create a asynchronous read call for our smart contract
 async function callStatic(func, args) {
   //Create a new contract instance that we can interact with
-  const contract = await client.getContractInstance(contractSource, contractAddress);
+  const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to get data of smart contract func, with specefied arguments
   const calledGet = await contract.call(func, args, {callStatic: true}).catch(e => console.error(e));
   //Make another call to decode the data received in first call
