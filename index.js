@@ -137,7 +137,7 @@ async function callStatic(func, args) {
 }
 
 window.addEventListener('load', async () => {
-    $('#loader').show();
+    $("#loader").show();
 
     client = await Ae.Aepp();
 
@@ -156,7 +156,7 @@ window.addEventListener('load', async () => {
     })
   }
   renderProduct();
-  $('#loader').hide();
+  $("#loader").hide();
 });
 
 // document.getElementById("bidButton").addEventListener('click', function(event){
