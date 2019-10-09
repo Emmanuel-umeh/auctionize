@@ -109,7 +109,7 @@ stateful entrypoint biddingSecurity() =
     abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2qPmiJgSMAfsKGueVSCHdK1zVtxB8z9Juig7nGNardvsTYZH2k';
+const contractAddress = 'ct_2F1i9qJVWEN3reRzShQvwVv8vDywAEx53kdJgEzrVvU83fjFmR';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
