@@ -109,7 +109,7 @@ stateful entrypoint biddingSecurity() =
     abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_mbvX3jRxD8D64yCwrzjpGJvxxqWdcnPxpLVeHPUgYP7Rwifwu';
+const contractAddress = 'ct_2qPmiJgSMAfsKGueVSCHdK1zVtxB8z9Juig7nGNardvsTYZH2k';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -123,6 +123,7 @@ function renderProduct()
     Mustache.parse(template);
     var rendered = Mustache.render(template, {ProductArray});
     $('#productBody').html(rendered);
+    console.log("for loop reached")
 }
 //Create a asynchronous read call for our smart contract
 async function callStatic(func, args) {
@@ -137,25 +138,25 @@ async function callStatic(func, args) {
 }
 
 window.addEventListener('load', async () => {
-    $("#loader").show();
+  $("#loader").show();
 
-    client = await Ae.Aepp();
+  client = await Ae.Aepp();
 
-    productLength = await callStatic('getProductLength', []); 
+  productLength = await callStatic('getProductLength', []); 
     
-    for(let i = 1; i<= productLength; i++ ){
-      const product =  await callStatic('getProduct', [i]);
+  for(let i = 1; i<= productLength; i++ ){
+    const product =  await callStatic('getProduct', [i]);
     
-      console.log("for loop reached")
+    console.log("for loop reached")
 
-      ProductArray.push({
-        name : product.sold,
-        url : product.nameofProduct,
-        index : i,
-        productName : product.url,
-        Price : product.currentPrice 
-    })
-  }
+    ProductArray.push({
+      name : product.sold,
+      url : product.nameofProduct,
+      index : i,
+      productName : product.url,
+      Price : product.currentPrice 
+  })
+}
   renderProduct();
   $("#loader").hide();
 });
