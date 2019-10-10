@@ -10,9 +10,9 @@
     overflow-y:scroll; */
 }
 
-body{
-    overflow-x:scroll;
-    overflow-y:scroll;
+body {
+    overflow-x: scroll;
+    overflow-y: scroll;
 
 }
 
@@ -23,7 +23,7 @@ body{
 #style-1::-webkit-scrollbar {
     width: 6px;
     background-color: #F5F5F5;
-} 
+}
 
 #style-1::-webkit-scrollbar-thumb {
     background-color: #000000;
@@ -31,14 +31,16 @@ body{
 
 
 #style-1::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
     box-shadow: #808080
-} 
+}
 
-.scrollbar{
-    min-height: 100vh;
-    max-height : 100vh;
-    overflow-y: auto;
-    overflow-x: auto;
+.scrollbar {
+    height: 100px;
+    width: 400px;
+    border: solid 2px orange;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
