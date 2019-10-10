@@ -6,8 +6,10 @@
     margin-left: 22px;
     margin-top: 40px;
     width: 65px;
-    /* overflow-x:scroll;
-    overflow-y:scroll; */
+    border: solid 2px orange;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 body {
@@ -43,11 +45,11 @@ body {
     background-color: #ffffff; 
 }
 
-.scrollbar {
+/* .scrollbar {
     height: 100px;
     width: 400px;
     border: solid 2px orange;
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: scroll;
-}
+} */
