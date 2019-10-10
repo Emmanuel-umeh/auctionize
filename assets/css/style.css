@@ -10,11 +10,11 @@
     overflow-y:scroll; */
 }
 
-/* body{
+body{
     overflow-x:scroll;
     overflow-y:scroll;
 
-} */
+}
 
 .force-overflow {
     min-height: 450px;
@@ -36,8 +36,9 @@
     box-shadow: #808080
 } 
 
-.container{
+.scrollbar{
     min-height: 100vh;
     max-height : 100vh;
-    overflow-y: auto
+    overflow-y: auto;
+    overflow-x: auto;
 }
