@@ -6,15 +6,15 @@
     margin-left: 22px;
     margin-top: 40px;
     width: 65px;
-    overflow-x:scroll;
-    overflow-y:scroll;
+    /* overflow-x:scroll;
+    overflow-y:scroll; */
 }
 
-.body{
+/* body{
     overflow-x:scroll;
     overflow-y:scroll;
 
-}
+} */
 
 .force-overflow {
     min-height: 450px;
