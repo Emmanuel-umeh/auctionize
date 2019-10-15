@@ -1,4 +1,4 @@
-/* .scrollbar {
+.scrollbar {
     background-color: #808080;
     float: left;
     height: 300px;
@@ -10,7 +10,7 @@
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: scroll;
-} */
+}
 
 body {
     overflow-x: scroll;
