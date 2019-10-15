@@ -137,6 +137,14 @@ async function callStatic(func, args) {
   return decodedGet;
 }
 
+async function contractCall(func, args) {
+  const contract = await client.getContractInstance(contractSource, {contractAddress});
+  //Make a call to write smart contract func, with aeon value input
+  const calledSet = await contract.call(func, args).catch(e => console.error(e));
+
+  return calledSet;
+}
+
 window.addEventListener('load', async () => {
   $("#loader").show();
 
@@ -187,10 +195,10 @@ jQuery("#productBody").on("click", ".bidButton", async function(event){
 //   });
 
 $('#regButton').click(async function(){
-    var name =($('#regSellerName').val()),
+    var name =($('#sellerName').val()),
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
-    productName = ($('#regProductName').val());
+    productName = ($('#regName').val());
 
     console.log("Price:",price)
     console.log(typeof price)
@@ -202,6 +210,7 @@ $('#regButton').click(async function(){
         url : url,
         index : ProductArray.length + 1,
         productName : productName,
+        
         Price : price 
     })
     renderProduct();
