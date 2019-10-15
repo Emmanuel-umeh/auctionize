@@ -199,10 +199,8 @@ $('#regButton').click(async function(){
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
     productName = ($('#regName').val());
-
-    console.log("Price:",price)
-    console.log(typeof price)
-    await contractCall('registerProduct', [name,price,ur,productName] )
+    await contractCall('registerProduct', [name,price,url,productName] )
+    console.log(name)
 
     
     ProductArray.push({
@@ -210,7 +208,7 @@ $('#regButton').click(async function(){
         url : url,
         index : ProductArray.length + 1,
         productName : productName,
-        
+
         Price : price 
     })
     renderProduct();
