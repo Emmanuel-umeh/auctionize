@@ -210,6 +210,7 @@ $('#regButton').click(async function(){
         url : url,
         index : ProductArray.length + 1,
         productName : productName,
+        
         Price : price 
     })
     renderProduct();
