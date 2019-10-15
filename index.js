@@ -109,7 +109,7 @@ stateful entrypoint biddingSecurity() =
     abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2F1i9qJVWEN3reRzShQvwVv8vDywAEx53kdJgEzrVvU83fjFmR';
+const contractAddress = 'ct_5FkcHRLztDdcUDyBD9QzHwTnLvvo3fpoN1EkE6vQMKJ82Lpce';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -193,7 +193,8 @@ $('#regButton').click(async function(){
     productName = ($('#regProductName').val());
 
     console.log("Price:",price)
-    console.log(typeof price);
+    console.log(typeof price)
+    await contractCall('registerProduct', [name,price,ur,productName] )
 
     
     ProductArray.push({
