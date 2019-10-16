@@ -110,7 +110,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_oRHdjnV9sLavWr6BQJdHGy1nUD4BfXmiTXpUJM2nhx31qVNTK';
+const contractAddress = 'ct_YX8mfyARvdfDhxrX9DtzopQp7e2DWKqqj2Gv2AiokAd5e7fYZ';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -138,10 +138,10 @@ async function callStatic(func, args) {
   return decodedGet;
 }
 
-async function contractCall(func, args) {
+async function contractCall(func, args, value) {
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to write smart contract func, with aeon value input
-  const calledSet = await contract.call(func, args).catch(e => console.error(e));
+  const calledSet = await contract.call(func, args, {amount: value}).catch(e => console.error(e));
 
   return calledSet;
 }
@@ -200,7 +200,7 @@ $('#regButton').click(async function(){
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
     productName = ($('#regName').val());
-    await contractCall('registerProduct', [name,price,url,productName] )
+    await contractCall('registerProduct', [url,productName,price], 0 )
     console.log(name)
 
     
