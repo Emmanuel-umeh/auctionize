@@ -20,7 +20,7 @@
 
 .force-overflow {
     min-height: 450px;
-    overflow-x: scroll;
+    
 }
 
 ::-webkit-scrollbar {
