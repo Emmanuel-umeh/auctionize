@@ -12,7 +12,7 @@
     overflow-y: scroll;
 } */
 
-body {
+.scrollstuff {
     overflow-x: scroll;
     overflow-y: scroll;
 
