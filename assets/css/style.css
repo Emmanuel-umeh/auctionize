@@ -1,4 +1,4 @@
-/* .scrollbar {
+.scrollbar {
     background-color: #808080;
     float: left;
     height: 300px;
@@ -7,10 +7,10 @@
     margin-top: 40px;
     width: 65px;
     border: solid 2px orange;
-    overflow: scroll;
+    
     overflow-x: hidden;
     overflow-y: scroll;
-} */
+}
 
 /* .scrollstuff {
     overflow-x: scroll;
