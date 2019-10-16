@@ -12,14 +12,15 @@
     overflow-y: scroll;
 } */
 
-.scrollstuff {
+/* .scrollstuff {
     overflow-x: scroll;
     overflow-y: scroll;
 
-}
+} */
 
 .force-overflow {
     min-height: 450px;
+    overflow-x: scroll;
 }
 
 ::-webkit-scrollbar {
