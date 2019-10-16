@@ -2,12 +2,6 @@
     background-color: #808080;
     float: left;
     
-    margin-bottom: 25px;
-    margin-left: 22px;
-    margin-top: 40px;
-    
-    border: solid 2px orange;
-    
     overflow-x: hidden;
     overflow-y: scroll;
 }
