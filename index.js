@@ -131,17 +131,19 @@ async function callStatic(func, args) {
   //Create a new contract instance that we can interact with
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to get data of smart contract func, with specefied arguments
+  console.log("CalledGet")
   const calledGet = await contract.call(func, args, {callStatic: true}).catch(e => console.error(e));
   //Make another call to decode the data received in first call
+  console.log("Called get found")
   const decodedGet = await calledGet.decode().catch(e => console.error(e));
-
+  console.log("catching errors")
   return decodedGet;
 }
 
-async function contractCall(func, args) {
+async function contractCall(func, args, value) {
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to write smart contract func, with aeon value input
-  const calledGet = await contract.call(func, args).catch(e => console.error(e));
+  const calledGet = await contract.call(func, args, {amount:value}).catch(e => console.error(e));
 
   return calledGet;
 }
@@ -175,14 +177,18 @@ window.addEventListener('load', async () => {
 // });
 
 $("#productBody").on("click", ".bidButton", async function(event){
+  $("#loader").show();
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
     const value = $(".bid")[foundIndex].value ;
+    await contractCall('bid', [dataIndex], value)
     console.log("the value",value);
     console.log(typeof value);
     
     ProductArray[foundIndex].Price += parseInt(value, 10);
     renderProduct();
+
+    $("#loader").hide();
 });
 
 // $(document).ready(function(){
@@ -196,6 +202,7 @@ $("#productBody").on("click", ".bidButton", async function(event){
 //   });
 
 $('#regButton').click(async function(){
+  $("#loader").show();
     var name =($('#sellerName').val()),
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
@@ -213,4 +220,5 @@ $('#regButton').click(async function(){
         Price : price 
     })
     renderProduct();
+    $("#loader").hide();
 });
