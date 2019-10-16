@@ -43,24 +43,3 @@ body {
 }
 
 
-
-/* .scrollstuff {
-    overflow-x: scroll;
-    overflow-y: scroll;
-
-} */
-
-/* .force-overflow {
-    /* min-height: 450px; */
-    
-*/
-
-/* !important is needed sometimes */
-/* .scrollbar {
-    height: 100px;
-    width: 400px;
-    border: solid 2px orange;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: scroll;
-} */
