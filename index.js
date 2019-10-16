@@ -173,7 +173,7 @@ window.addEventListener('load', async () => {
 //     console.log(document.getElementById("input").value)
 // });
 
-jQuery("#productBody").on("click", ".bidButton", async function(event){
+$("#productBody").on("click", ".bidButton", async function(event){
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
     const value = $(".bid")[foundIndex].value ;
