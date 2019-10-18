@@ -217,6 +217,7 @@ $('#regButton').click(async function(){
         url : url,
         index : ProductArray.length + 1,
         productName : productName,
+        description : description,
 
         Price : price 
     })
