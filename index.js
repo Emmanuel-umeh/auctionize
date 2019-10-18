@@ -179,15 +179,23 @@ window.addEventListener('load', async () => {
 
 $("#productBody").on("click", ".bidButton", async function(event){
   $("#loader").show();
+    var review = 0;
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
     const value = $(".bid")[foundIndex].value ;
+
+    
     await contractCall('bid', [dataIndex], value)
     console.log("the value",value);
     console.log(typeof value);
+    review += 1;
     
     ProductArray[foundIndex].Price += parseInt(value, 10);
     renderProduct();
+
+    ProductArray.push({
+      review : review
+  })
 
     $("#loader").hide();
 });
