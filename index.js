@@ -6,6 +6,7 @@ contract MyAuction =
       url            : string,
       nameofProduct  : string,
       currentPrice   : int,
+      description  : string,
       sold           : bool }
 
   record state = 
@@ -25,8 +26,8 @@ contract MyAuction =
       None => abort("Product does not exist with this index")
       Some(x) => x  
 
-  stateful entrypoint registerProduct(url' : string, nameofProduct': string, currentPrice': int) =
-    let product = { creatorAddress = Call.caller, url = url', nameofProduct = nameofProduct', currentPrice = currentPrice', sold = false}  
+  stateful entrypoint registerProduct(url' : string, nameofProduct': string, description' : string, currentPrice': int) =
+    let product = { creatorAddress = Call.caller, url = url', nameofProduct = nameofProduct', currentPrice = currentPrice', description = description', sold = false}  
     let index = getProductLength() + 1 
     put(state{products[index] = product, productLength  = index})
 
