@@ -110,7 +110,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2FwkEdWLC8XJEruPJSdnT8QThMNC4ggVahrcnhPP7hQsffTakm';
+const contractAddress = 'ct_2X8ME9d22MBZveLgfabzNr8rkwRsqhcgnpwWzrYFdbEzTc7CFc';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
