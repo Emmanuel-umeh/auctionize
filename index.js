@@ -133,7 +133,7 @@ async function callStatic(func, args) {
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to get data of smart contract func, with specefied arguments
   console.log("Contract : ", contract)
-  const calledGet = await contract.call(func, args).catch(e => console.error(e));
+  const calledGet = await contract.call(func, args, {callStatic: true}).catch(e => console.error(e));
   //Make another call to decode the data received in first call
   console.log("Called get found: ",  calledGet)
   const decodedGet = await calledGet.decode().catch(e => console.error(e));
@@ -144,9 +144,9 @@ async function callStatic(func, args) {
 async function contractCall(func, args, value) {
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to write smart contract func, with aeon value input
-  const calledGet = await contract.call(func, args, {amount:value}).catch(e => console.error(e));
+  const calledSet = await contract.call(func, args, {amount:value}).catch(e => console.error(e));
 
-  return calledGet;
+  return calledSet;
 }
 
 window.addEventListener('load', async () => {
