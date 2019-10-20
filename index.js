@@ -113,7 +113,7 @@ contract MyAuction =
 
 const contractAddress = 'ct_2eCH2V8UwVNrfVjxPFeNZC2JG9ZToe1LchiUzyGVWD7HBho8WS';
 var ProductArray = [];
-var client;
+var client = null;
 var productLength = 0;
 
 
@@ -133,7 +133,7 @@ async function callStatic(func, args) {
   const contract = await client.getContractInstance(contractSource, {contractAddress});
   //Make a call to get data of smart contract func, with specefied arguments
   console.log("Contract : ", contract)
-  const calledGet = await contract.call(func, args, {callStatic: true}).catch(e => console.error(e));
+  const calledGet = await contract.call(func, args).catch(e => console.error(e));
   //Make another call to decode the data received in first call
   console.log("Called get found: ",  calledGet)
   const decodedGet = await calledGet.decode().catch(e => console.error(e));
