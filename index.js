@@ -113,7 +113,7 @@ contract MyAuction =
 
 const contractAddress = 'ct_2eCH2V8UwVNrfVjxPFeNZC2JG9ZToe1LchiUzyGVWD7HBho8WS';
 var ProductArray = [];
-var client = null;
+var client;
 var productLength = 0;
 
 
