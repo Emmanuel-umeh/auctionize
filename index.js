@@ -186,6 +186,7 @@ $("#productBody").on("click", ".bidButton", async function(event){
 
     
     await contractCall('bid', [dataIndex], value)
+    await contractCall('biddingSecurity', value)
     console.log("the value",value);
     console.log(typeof value);
     review += 1;
