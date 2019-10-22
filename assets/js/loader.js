@@ -1,6 +1,6 @@
-window.onload = function() 
-    {
-        //display loader on page load 
-        $('#loadings').fadeOut()
-    }
+// window.onload = function() 
+//     {
+//         //display loader on page load 
+//         $('#loadings').fadeOut()
+//     }
 
