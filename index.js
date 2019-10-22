@@ -7,7 +7,8 @@ contract MyAuction =
       nameofProduct  : string,
       currentPrice   : int,
       description  : string,
-      sold           : bool }
+      sold           : bool,
+      reviews        : int}
 
   record state = 
     { products : map(int, product),
@@ -27,7 +28,7 @@ contract MyAuction =
       Some(x) => x  
 
   stateful entrypoint registerProduct(url' : string, nameofProduct': string, description' : string, currentPrice': int) =
-    let product = { creatorAddress = Call.caller, url = url', nameofProduct = nameofProduct', currentPrice = currentPrice', description = description', sold = false}  
+    let product = { creatorAddress = Call.caller, url = url', nameofProduct = nameofProduct', currentPrice = currentPrice', description = description', sold = false, reviews = state.bidderLength}  
     let index = getProductLength() + 1 
     put(state{products[index] = product, productLength  = index})
 
@@ -111,7 +112,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2LuzyyFL7h4Aa2Kpsyuzb35njRTRsvhoRYcvJXzsQWobVvtYky';
+const contractAddress = 'ct_VUsst8aspzLL5v1bVxyfrQ1uAkbs2ySBTcV7tJdRyZhZtRWih';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -167,6 +168,7 @@ window.addEventListener('load', async () => {
       index : i,
       productNames : product.productName,
       Price : product.currentPrice ,
+      review : product.review
   })
 }
   renderProduct();
