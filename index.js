@@ -111,7 +111,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2eCH2V8UwVNrfVjxPFeNZC2JG9ZToe1LchiUzyGVWD7HBho8WS';
+const contractAddress = 'ct_2LuzyyFL7h4Aa2Kpsyuzb35njRTRsvhoRYcvJXzsQWobVvtYky';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
@@ -152,7 +152,7 @@ async function contractCall(func, args, value) {
 window.addEventListener('load', async () => {
   $("#loader").show();
 
-  client = await Ae.Aepp();
+  client = await Ae.Aepp()
 
   productLength = await callStatic('getProductLength', []); 
     
