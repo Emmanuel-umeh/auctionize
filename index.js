@@ -166,9 +166,9 @@ window.addEventListener('load', async () => {
       sold : product.sold,
       url : product.url,
       index : i,
-      productNames : product.productName,
+      productNames : product.nameofProduct,
       Price : product.currentPrice ,
-      review : product.review
+      review : product.reviews
   })
 }
   renderProduct();
