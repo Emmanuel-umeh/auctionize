@@ -181,7 +181,7 @@ window.addEventListener('load', async () => {
 
 $("#productBody").on("click", ".bidButton", async function(event){
   $("#loadings").show();
-    var review = 0;
+    // var review = 0;
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
     const value = $(".bid")[foundIndex].value ;
@@ -194,10 +194,11 @@ $("#productBody").on("click", ".bidButton", async function(event){
     
     
     ProductArray[foundIndex].Price += parseInt(value, 10);
+    ProductArray[foundIndex].review += 1;
     renderProduct();
 
     ProductArray.push({
-      review : review + 1
+      review : review
   })
 
     $("#loadings").hide();
