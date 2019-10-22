@@ -8,7 +8,7 @@
     background-color: #ffffffcf;
 }
 .loader img{
-    position: relative;
-    left: 40%;
-    top: 40%;
+    position: center;
+    /* left: 40%;
+    top: 40%; */
 }
