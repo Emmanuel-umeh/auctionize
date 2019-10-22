@@ -162,10 +162,10 @@ window.addEventListener('load', async () => {
     console.log("for loop reached")
 
     ProductArray.push({
-      name : product.sold,
-      url : product.nameofProduct,
+      sold : product.sold,
+      url : product.url,
       index : i,
-      productName : product.url,
+      productName : product.productName,
       Price : product.currentPrice 
   })
 }
