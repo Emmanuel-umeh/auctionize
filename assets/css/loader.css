@@ -1,4 +1,4 @@
-#loader {
+#loadings {
     position: fixed;
     left: 0px;
     top: 0px;
@@ -7,7 +7,7 @@
     z-index: 9999;
     background-color: #ffffffcf;
 }
-#loader img{
+#loadings img{
     position: center;
     left: 40%;
     top: 40%;

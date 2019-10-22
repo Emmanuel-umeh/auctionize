@@ -150,7 +150,7 @@ async function contractCall(func, args, value) {
 }
 
 window.addEventListener('load', async () => {
-  $("#loader").show();
+  $("#loadings").show();
 
   client = await Ae.Aepp()
 
@@ -170,7 +170,7 @@ window.addEventListener('load', async () => {
   })
 }
   renderProduct();
-  $("#loader").hide();
+  $("#loadings").hide();
 });
 
 // document.getElementById("bidButton").addEventListener('click', function(event){
@@ -178,7 +178,7 @@ window.addEventListener('load', async () => {
 // });
 
 $("#productBody").on("click", ".bidButton", async function(event){
-  $("#loader").show();
+  $("#loadings").show();
     var review = 0;
     const dataIndex = event.target.id;
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
@@ -198,7 +198,7 @@ $("#productBody").on("click", ".bidButton", async function(event){
       review : review
   })
 
-    $("#loader").hide();
+    $("#loadings").hide();
 });
 
 // $(document).ready(function(){
@@ -212,7 +212,7 @@ $("#productBody").on("click", ".bidButton", async function(event){
 //   });
 
 $('#regButton').click(async function(){
-  $("#loader").show();
+  $("#loadings").show();
     var name =($('#sellerName').val()),
     price = parseInt(($('#regPrice').val()),10),
     url = ($('#regUrl').val()),
@@ -232,5 +232,5 @@ $('#regButton').click(async function(){
         Price : price 
     })
     renderProduct();
-    $("#loader").hide();
+    $("#loadings").hide();
 });
