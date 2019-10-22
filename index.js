@@ -165,7 +165,7 @@ window.addEventListener('load', async () => {
       sold : product.sold,
       url : product.url,
       index : i,
-      productName : product.productName,
+      productNames : product.productName,
       Price : product.currentPrice ,
   })
 }
