@@ -312,10 +312,10 @@ $('#regButton').click(async function(){
 
         Price : price ,
         review : ProductArray.reviews,
-        days : days,
-        hours : hours,
-        minutes : minutes,
-        seconds : seconds
+        days : ProductArray.days,
+        hours : ProductArray.hours,
+        minutes : ProductArray.minutes,
+        seconds : ProductArray.seconds
         
     })
     renderProduct();
