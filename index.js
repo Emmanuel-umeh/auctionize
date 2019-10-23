@@ -159,7 +159,7 @@ window.addEventListener('load', async () => {
 
   productLength = await callStatic('getProductLength', []); 
     
-  for(let i = 1; i<= productLength+1; i++ ){
+  for(let i = 1; i<= productLength; i++ ){
     const product =  await callStatic('getProduct', [i]);
     
     console.log("for loop reached")
