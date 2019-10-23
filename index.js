@@ -196,12 +196,12 @@ $("#productBody").on("click", ".bidButton", async function(event){
     console.log(typeof value);
     
     
-    product.review += 1;
+    // product.review += 1;
     renderProduct();
 
-    ProductArray.push({
-      review : review
-  })
+  //   ProductArray.push({
+  //     review : review
+  // })
 
     $("#loadings").hide();
 });
