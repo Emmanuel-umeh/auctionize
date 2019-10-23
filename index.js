@@ -277,7 +277,11 @@ $('#regButton').click(async function(){
         description : description,
 
         Price : price ,
-        review : ProductArray.reviews
+        review : ProductArray.reviews,
+        days : days,
+        hours : hours,
+        minutes : minutes,
+        seconds : seconds
         
     })
     renderProduct();
