@@ -40,14 +40,16 @@ contract MyAuction =
 
   //bid functionality
 
-  stateful entrypoint bid(index: int) =
+  payable stateful entrypoint bid(index: int) =
     let product = getProduct(index)
     let addresses = Call.caller
     let updatedBid = Call.value
     let contractBalance = getContractBalance()
     put(state{bidders[index]= addresses})
-
+    
     biddingSecurity()
+
+    
 
 
     if(product.sold == true)
@@ -59,7 +61,7 @@ contract MyAuction =
     
       //second bid
     if(Call.value > product.currentPrice && contractBalance != 0)
-      let previousbidder = getBidderAddress(index-1)
+      let previousbidder = getBidderAddress(index)
       Chain.spend(previousbidder,Contract.balance)
   
     elif(Call.value < updatedBid)
@@ -112,7 +114,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_VUsst8aspzLL5v1bVxyfrQ1uAkbs2ySBTcV7tJdRyZhZtRWih';
+const contractAddress = 'ct_2u44ARDGRRYmhRWfNfGKSZXcLtpr4R3nGi8PhQZCCHkbrvdDsJ';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
