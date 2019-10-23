@@ -190,14 +190,12 @@ $("#productBody").on("click", ".bidButton", async function(event){
 
     
     await contractCall('bid', [dataIndex], value);
-    const product =  await callStatic('getProduct', [i]);
+    
     
     console.log("the value",value);
     console.log(typeof value);
     
     
-    ProductArray[foundIndex].Price += parseInt(value, 10);
-    // ProductArray[foundIndex].review += 1;
     product.review += 1;
     renderProduct();
 
