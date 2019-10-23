@@ -273,7 +273,7 @@ $('#regButton').click(async function(){
         description : description,
 
         Price : price ,
-        review : ProductArray.review
+        review : ProductArray.reviews
         
     })
     renderProduct();
