@@ -54,20 +54,21 @@ contract MyAuction =
 
     if(product.sold == true)
       abort("product has been sold")
+      
     //first bid
-    if(Call.value > product.currentPrice &&  contractBalance == 0)
-      Chain.spend(Contract.address, Call.value)
+    //if(Call.value > product.currentPrice &&  contractBalance == 0)
+      //Chain.spend(Contract.address, Call.value)
     
     
       //second bid
-    if(Call.value > product.currentPrice && contractBalance != 0)
-      let previousbidder = getBidderAddress(index)
-      Chain.spend(previousbidder,Contract.balance)
+    //if(Call.value > product.currentPrice && contractBalance != 0)
+      //let previousbidder = getBidderAddress(index)
+      //Chain.spend(previousbidder,Contract.balance)
   
-    elif(Call.value < updatedBid)
-      abort("your bid is lower than the current bid")
-    else
-      abort("you need to enter a value higher than 0 ")
+    //elif(Call.value < updatedBid)
+      //abort("your bid is lower than the current bid")
+    //else
+      //abort("you need to enter a value higher than 0 ")
     let updatedProduct = state.products{ [index].currentPrice = updatedBid}
     let index = getBidderLength() + 1
 
@@ -114,7 +115,7 @@ contract MyAuction =
       abort("you cannot bid on your own product")`; 
 
 
-const contractAddress = 'ct_2u44ARDGRRYmhRWfNfGKSZXcLtpr4R3nGi8PhQZCCHkbrvdDsJ';
+const contractAddress = 'ct_cZozTq3weMiSgHDEzCPB9hwFC9YchNrEA2yjHSaLgstMXZE2Z';
 var ProductArray = [];
 var client = null;
 var productLength = 0;
