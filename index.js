@@ -231,7 +231,7 @@ $('#regButton').click(async function(){
     await contractCall('registerProduct', [url,productName,description,price])
     console.log(name)
 
-    ProductArray[foundIndex].review += 1 ;
+    ProductArray.review += 1 ;
 
     
     ProductArray.push({
