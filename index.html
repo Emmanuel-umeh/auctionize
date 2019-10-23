@@ -178,36 +178,19 @@
 
         <script id="template" type="x-tmpl-mustache">
             {{#ProductArray}}
+            
             <div class="col-sm-6 col-md-4 col-lg-4 product-item">
                 <div class="product-container">
                     <div class="row">
                         <div class="col-md-12"><a href="#" class="product-image"><img src="{{url}}"></a>
                             <div class="row">
-                                <div class="container">
-                                    <h1>Time Till End of Bid</h1>
-                                    <div id="clockdiv">
-                                        <div class="clock-wrapper"><span class="days">1 </span>
-                                            <div class="smalltext">
-                                                <p>Days </p>
-                                            </div>
-                                        </div>
-                                        <div class="clock-wrapper"><span class="hours">12 </span>
-                                            <div class="smalltext">
-                                                <p>Hours </p>
-                                            </div>
-                                        </div>
-                                        <div class="clock-wrapper"><span class="minutes">30 </span>
-                                            <div class="smalltext">
-                                                <p>Minutes </p>
-                                            </div>
-                                        </div>
-                                        <div class="clock-wrapper"><span class="seconds">45 </span>
-                                            <div class="smalltext">
-                                                <p>Seconds </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <amp-date-countdown timestamp-seconds="2147483648"
+                                layout="fixed-height"
+                                height="100">
+                                <template type="amp-mustache">
+                                  {{d}} days, {{h}} hours, {{m}} minutes and {{s}} seconds until <a href="https://en.wikipedia.org/wiki/Year_2038_problem">Y2K38</a>.
+                                </template>
+                              </amp-date-countdown>
                             </div>
                         </div>
                     </div>
@@ -232,10 +215,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-           
-            <script src="assets/js/countdown-timer.js"></script>
+            </div>  
+
             
             {{/ProductArray}}
         </script>
@@ -278,7 +259,8 @@
 <script src="assets/js/countdown-timer.js"></script>
 <script src="index.js"></script>
 <script src="assets/js/loader.js"></script>
-
+<script async custom-element="amp-date-countdown" src="https://cdn.ampproject.org/v0/amp-date-countdown-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
 
 
 
