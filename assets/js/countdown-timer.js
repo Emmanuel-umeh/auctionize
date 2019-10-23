@@ -19,10 +19,10 @@ function makeTimer() {
       if (minutes < "10") { minutes = "0" + minutes; }
       if (seconds < "10") { seconds = "0" + seconds; }
 
-      $("#days").html(days + "<span>Days</span>");
-      $("#hours").html(hours + "<span>Hours</span>");
-      $("#minutes").html(minutes + "<span>Minutes</span>");
-      $("#seconds").html(seconds + "<span>Seconds</span>");		
+      days = $("#days").html(days + "<span>Days</span>");
+      hours = $("#hours").html(hours + "<span>Hours</span>");
+      minutes = $("#minutes").html(minutes + "<span>Minutes</span>");
+      seconds = $("#seconds").html(seconds + "<span>Seconds</span>");		
 
   }
 
