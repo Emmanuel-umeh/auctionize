@@ -185,10 +185,10 @@ window.addEventListener('load', async () => {
         if (minutes < "10") { minutes = "0" + minutes; }
         if (seconds < "10") { seconds = "0" + seconds; }
   
-        days = $("#days").html(days + "<span>Days</span>");
-        hours = $("#hours").html(hours + "<span>Hours</span>");
-        minutes = $("#minutes").html(minutes + "<span>Minutes</span>");
-        seconds = $("#seconds").html(seconds + "<span>Seconds</span>");		
+        initialdays = $("#days").html(days + "<span>Days</span>");
+        initialhours = $("#hours").html(hours + "<span>Hours</span>");
+        initialminutes = $("#minutes").html(minutes + "<span>Minutes</span>");
+        initialseconds = $("#seconds").html(seconds + "<span>Seconds</span>");		
   
     }
   
@@ -206,11 +206,11 @@ window.addEventListener('load', async () => {
       productNames : product.nameofProduct,
       Price : product.currentPrice ,
       review : product.reviews,
-      
-      days : days,
-      hours : hours,
-      minutes : minutes,
-      seconds : seconds
+
+      days : initialdays,
+      hours : initialhours,
+      minutes : initialminutes,
+      seconds : initialseconds
   })
 }
   renderProduct();
