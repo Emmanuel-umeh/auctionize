@@ -242,6 +242,7 @@ $('#regButton').click(async function(){
         description : description,
 
         Price : price ,
+        review : review
         
     })
     renderProduct();
