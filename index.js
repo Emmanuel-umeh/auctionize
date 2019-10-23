@@ -160,7 +160,7 @@ window.addEventListener('load', async () => {
 
   productLength = await callStatic('getProductLength', []); 
     
-  for(let i = 1; i<= productLength; i++ ){
+  for(let i = 1; i< productLength + 1; i++ ){
     const product =  await callStatic('getProduct', [i]);
     
     console.log("for loop reached")
@@ -231,6 +231,8 @@ $('#regButton').click(async function(){
     await contractCall('registerProduct', [url,productName,description,price])
     console.log(name)
 
+    ProductArray[foundIndex].review += 1 ;
+
     
     ProductArray.push({
         name : name,
@@ -239,7 +241,8 @@ $('#regButton').click(async function(){
         productName : productName,
         description : description,
 
-        Price : price 
+        Price : price ,
+        
     })
     renderProduct();
     $("#loadings").hide();
