@@ -12,18 +12,18 @@ span {
 }
 
 #days {
-  font-size: 100px;
+  font-size: 40px;
   color: #db4844;
 }
 #hours {
-  font-size: 100px;
+  font-size: 30px;
   color: #f07c22;
 }
 #minutes {
-  font-size: 100px;
+  font-size: 20px;
   color: #f6da74;
 }
 #seconds {
-  font-size: 50px;
+  font-size: 10px;
   color: #abcd58;
 }
