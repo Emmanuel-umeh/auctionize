@@ -196,6 +196,7 @@ $("#productBody").on("click", ".bidButton", async function(event){
     console.log(typeof value);
 
     ProductArray[foundIndex].Price += parseInt(value,10);
+    ProductArray[foundIndex].review += 1 ;
     
     
     // product.review += 1;
