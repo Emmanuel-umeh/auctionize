@@ -188,8 +188,9 @@ $("#productBody").on("click", ".bidButton", async function(event){
     const foundIndex = ProductArray.findIndex(product => product.index == dataIndex);
     const value = $(".bid")[foundIndex].value ;
 
+
     
-    await contractCall('bid', [dataIndex], value);
+    await contractCall('bid', [dataIndex], Math.abs(value));
     
     
     console.log("the value",value);
